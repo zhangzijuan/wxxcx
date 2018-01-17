@@ -1,2 +1,5 @@
 <!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<view class='divider-section'></view>
+<view class='page-title'>
+  <text>我的选课</text>
+</view>

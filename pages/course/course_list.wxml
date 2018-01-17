@@ -1,42 +1,51 @@
 <template name="courseItem">
-  <navigator url="/pages/courseDetail/course_detail?courseId={{courseId}}">
-    <view class="single-pic-container" wx:if="{{urlList.length <=1}}">
-        <view class="course-base-info">
-          <text class="course-name">{{name}}</text>
+  <view class='course-list-container'>
+    <navigator url="/pages/courseDetail/course_detail?courseId={{courseId}}">
+      <view class="single-pic-container">
+          <block wx:for="{{urlList}}" wx:key="item" >
+            <view wx:if="{{index == 0}}" class="course-pic">
+              <image src="{{item}}" lazy-load="true"></image> 
+            </view>
+          </block>
+          <view class="course-base-info">
+            <text class="course-name">{{name}}</text>
+          </view>
           <view class='course-other-tip'>
+            <text class="course-comment">{{commentCount}}评论</text>
+            <text class="course-learn">{{learningCount}}学过</text>
+          </view>
+      </view>
+      <!-- <view class="multiple-pic-container" wx:else>
+          <text class="multiple-course-name">{{name}}</text>
+          <view class="multiple-course-pic">
+            <view class='course-cover' wx:for="{{urlList}}" wx:key="item">
+              <image src="{{item}}" mode="widthFix" lazy-load="true"></image> 
+            </view>
+          </view>
+          <view class='multiple-course-other-tip'>
               <text class="course-comment">{{commentCount}}评论</text>
               <text class="course-learn">{{learningCount}}学过</text>
           </view>
-        </view>
-        <view wx:for="{{urlList}}" wx:key="item" class="course-pic">
-          <image src="{{item}}" mode="widthFix" lazy-load="true"></image> 
-        </view>
-    </view>
-    <view class="multiple-pic-container" wx:else>
-        <text class="multiple-course-name">{{name}}</text>
-        <view class="multiple-course-pic">
-          <view class='course-cover' wx:for="{{urlList}}" wx:key="item">
-            <image src="{{item}}" mode="widthFix" lazy-load="true"></image> 
-          </view>
-        </view>
-        <view class='multiple-course-other-tip'>
-            <text class="course-comment">{{commentCount}}评论</text>
-            <text class="course-learn">{{learningCount}}学过</text>
-        </view>
-    </view>
-  </navigator>
+      </view> -->
+    </navigator>
+  </view>
 </template>
 
 
-
+<view class='divider-section'></view>
+<view class='page-title'>
+  <text>每周精选</text>
+</view>
 <scroll-view scroll-y class="course-scroll-section" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" upper-threshold="100" lower-threshold="100" scroll-with-animation="true" enable-back-to-top="true"> 
   <view class='pull-down-section' wx:if="{{showPullDown == true}}">
     <text wx:if="{{firstPage == false}}">数据加载中。。。</text>
     <text wx:if="{{firstPage == true}}">已经是最新数据啦。。。</text>
   </view>
-  <block wx:for="{{courseList}}" wx:key="courseId">
+  <view class='course-list-section'>
+    <block wx:for="{{courseList}}" wx:key="courseId">
       <template is="courseItem" data="{{...item}}"/>
-  </block>
+    </block>
+  </view>
   <view class='pull-up-section' wx:if="{{showPullUp == true}}">
     <text wx:if="{{lastPage == false}}">数据加载中。。。</text>
     <text wx:if="{{lastPage == true}}">已经到底啦。。。</text>

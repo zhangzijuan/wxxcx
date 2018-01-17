@@ -8,3 +8,15 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+.divider-section{
+  display: block;
+  height: 10rpx;
+  background-color: #eee;
+}
+.page-title{
+    display: flex;
+    justify-content: center;
+    font-size: 36rpx;
+    color: #242526;
+    padding: 30rpx 0;
+}
