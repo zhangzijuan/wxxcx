@@ -1,1 +1,19 @@
 /* pages/my/my.wxss */
+.course-list-section{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap:wrap;
+  padding:10rpx 30rpx 0;
+}
+
+.course-scroll-section{
+  height: 1050rpx;  
+}
+
+.pull-down-section,.pull-up-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20rpx 0;
+}

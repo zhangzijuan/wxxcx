@@ -5,7 +5,8 @@
     "pages/course/course_list",
     "pages/my/my",
     "pages/courseDetail/course_detail",
-    "pages/webPage/webPage"
+    "pages/webPage/webPage",
+    "pages/template/commonTemplate"
   ],
   "window": {
     "backgroundTextStyle": "light",

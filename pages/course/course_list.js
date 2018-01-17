@@ -1,5 +1,5 @@
 
-const util = require('../../utils/util.js')
+const util = require('../../utils/util.js');
 
 // pages/course/course_list.js
 var app = getApp();
@@ -28,7 +28,7 @@ Page({
     })
     let that = this;
     //加载课程列表数据
-    util.getCoursesData(this.data.pageNo, this.data.pageSize,app.globalData.session_id,function(res){
+    util.getCoursesData('selectCourse',this.data.pageNo, this.data.pageSize,app.globalData.session_id,function(res){
       console.log(res.data);
       that.setData({
         courseList: res.data
@@ -47,7 +47,7 @@ Page({
     //加载课程列表数据
     setTimeout(function(){
       let newPageNo = 1;
-      util.getCoursesData(newPageNo, that.data.pageSize, app.globalData.session_id, function (res) {
+      util.getCoursesData('selectCourse',newPageNo, that.data.pageSize, app.globalData.session_id, function (res) {
         console.log(res.data);
         that.setData({
           courseList: res.data,
@@ -65,7 +65,7 @@ Page({
     });
     setTimeout(function () {
       let newPageNo =  1;
-      util.getCoursesData(newPageNo, that.data.pageSize, app.globalData.session_id, function (res) {
+      util.getCoursesData('selectCourse',newPageNo, that.data.pageSize, app.globalData.session_id, function (res) {
         console.log(res.data);
         let resultCourseList = null;
         if (res.data[0].courseId != that.data.courseList[0].courseId){
@@ -95,7 +95,7 @@ Page({
     });
     setTimeout(function () {
       let newPageNo = that.data.pageNo + 1;
-      util.getCoursesData(newPageNo, that.data.pageSize, app.globalData.session_id, function (res) {
+      util.getCoursesData('selectCourse',newPageNo, that.data.pageSize, app.globalData.session_id, function (res) {
         console.log(res.data);
         if (res.data.length == 0){
           that.setData({
