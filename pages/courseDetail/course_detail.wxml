@@ -1,0 +1,19 @@
+<!--pages/courseDetail/course_detail.wxml-->
+<view class='course-detail-section'>
+    <view class='course-cover-container'>
+        <view wx:if="{{courseDetail.urlList.length >1 }}">
+            <swiper indicator-dots="true" autoplay="false" interval="2000" duration="500">
+              <block wx:for="{{courseDetail.urlList}}">
+                <swiper-item>
+                  <image src="{{item}}" class="slide-image" width="355" height="150"/>
+                </swiper-item>
+              </block>
+            </swiper>
+        </view>
+        <view wx:else class='single-cover'>
+            <block wx:for="{{courseDetail.urlList}}">
+              <image src="{{item}}" class="slide-image" width="355" height="150" mode='widthFix'/>
+            </block>
+        </view>
+    </view>
+</view>

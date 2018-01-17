@@ -1,0 +1,6 @@
+/* pages/courseDetail/course_detail.wxss */
+.single-cover{
+  display: block;
+  height: 150px;
+  overflow: hidden;
+}

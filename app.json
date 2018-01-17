@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/course/course_list",
+    "pages/my/my",
+    "pages/courseDetail/course_detail",
+    "pages/webPage/webPage"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "收获",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#FFC200",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "pages/image/index_no_selected.png",
+        "selectedIconPath": "pages/image/index_selected.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "日志",
+        "iconPath": "pages/image/circle_no_selected.png",
+        "selectedIconPath": "pages/image/circle_selected.png"
+      },
+      {
+        "pagePath": "pages/course/course_list",
+        "text": "课程",
+        "iconPath": "pages/image/find_no_selected.png",
+        "selectedIconPath": "pages/image/find_selected.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "pages/image/my_no_selected.png",
+        "selectedIconPath": "pages/image/my_selected.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000
+  },
+  "debug": true
+}

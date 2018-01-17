@@ -1,0 +1,34 @@
+/**index.wxss**/
+.container{
+  padding-top: 50rpx;
+}
+
+.scan-code-section{
+  padding: 20rpx 10rpx;
+  margin: 0 40rpx 100rpx;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: red;
+  font-size: 80rpx;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+

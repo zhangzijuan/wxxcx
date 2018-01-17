@@ -1,0 +1,68 @@
+/* pages/course/course_list.wxss */
+
+.single-pic-container{
+  margin: 0 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  border-bottom: 2rpx solid #ccc;
+  padding: 22rpx 0 20rpx;
+}
+
+.course-base-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  height: 126rpx;
+}
+.course-name,.multiple-course-name{
+  font-size: 36rpx;
+  color: #242526;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  width: 380rpx;
+}
+.course-pic image,.course-cover image{
+  width:220rpx;
+}
+.course-other-tip,.multiple-course-other-tip{
+  color: #bbb;
+  font-size: 29rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 230rpx;
+}
+
+.course-scroll-section{
+  height: 1050rpx;  
+}
+
+.multiple-pic-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 0 30rpx;
+  border-bottom: 2rpx solid #ccc;
+  padding: 22rpx 0;
+}
+.multiple-course-name{
+  width: 100%;
+}
+.multiple-course-pic{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 18rpx;
+}
+.multiple-course-other-tip{
+  margin-top: 15rpx;
+}
+.pull-down-section,.pull-up-section{
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20rpx 0;
+}
