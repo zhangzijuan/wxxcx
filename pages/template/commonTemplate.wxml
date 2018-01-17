@@ -1,0 +1,32 @@
+<template name="courseItem">
+  <view class='course-list-container'>
+    <navigator url="/pages/courseDetail/course_detail?courseId={{courseId}}">
+      <view class="single-pic-container">
+          <block wx:for="{{urlList}}" wx:key="item" >
+            <view wx:if="{{index == 0}}" class="course-pic">
+              <image src="{{item}}" lazy-load="true"></image> 
+            </view>
+          </block>
+          <view class="course-base-info">
+            <text class="course-name">{{name}}</text>
+          </view>
+          <view class='course-other-tip'>
+            <text class="course-comment">{{commentCount}}评论</text>
+            <text class="course-learn">{{learningCount}}学过</text>
+          </view>
+      </view>
+      <!-- <view class="multiple-pic-container" wx:else>
+          <text class="multiple-course-name">{{name}}</text>
+          <view class="multiple-course-pic">
+            <view class='course-cover' wx:for="{{urlList}}" wx:key="item">
+              <image src="{{item}}" mode="widthFix" lazy-load="true"></image> 
+            </view>
+          </view>
+          <view class='multiple-course-other-tip'>
+              <text class="course-comment">{{commentCount}}评论</text>
+              <text class="course-learn">{{learningCount}}学过</text>
+          </view>
+      </view> -->
+    </navigator>
+  </view>
+</template>
