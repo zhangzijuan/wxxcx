@@ -1,3 +1,4 @@
+const until = require('/utils/util.js');
 //app.js
 App({
   onLaunch: function () {
@@ -32,22 +33,11 @@ App({
         }
       }
     })
+    let that = this;
     //收获用户登陆
-    wx.request({
-      url: 'https://v4.21tb.com/ms/login/login.do',
-      method: 'POST',
-      data: {
-        loginName: '13371968386',
-        password: '13371968386',
-        corpCode: 'harvest_public'
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: result => {
-        this.globalData.session_id = result.data.data;
-      }
-    })
+    until.harvestLogin(function(res){
+      that.globalData.session_id = res.data;
+    });
   },
   globalData: {
     userInfo: null,

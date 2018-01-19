@@ -8,7 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    currentIndex:0,
+    courseItemBarToTop:false,
+    courseItemBar: [{ itemName: '简介', selected: true }, { itemName: '目录', selected: false }, { itemName: '评价', selected: false }]
   },
 
   /**
@@ -31,7 +33,46 @@ Page({
         });
       });
   },
+  tabBarClick:function(e){
+    let that = this;
+    console.log(e);
+    //设置tabBar点击效果
+    var currentEventIndex = e.currentTarget.dataset.itemindex;
+    var oldCourseItemBar = that.data.courseItemBar;
+    for(var i = 0;i < oldCourseItemBar.length;i++){
+       if(i == currentEventIndex){
+         oldCourseItemBar[i].selected = true;
+       }else{
+         oldCourseItemBar[i].selected = false;
+       }
+    }
+    console.log(oldCourseItemBar);
+    that.setData({
+      courseItemBar: oldCourseItemBar,
+      currentIndex:currentEventIndex
+    })
 
+  },
+  //内容块滑动事件处理
+  touchSwiper:function(e){
+    console.log(e);
+    let that = this;
+    //设置tabBar点击效果
+    var currentEventIndex = e.detail.current;
+    var oldCourseItemBar = that.data.courseItemBar;
+    for (var i = 0; i < oldCourseItemBar.length; i++) {
+      if (i == currentEventIndex) {
+        oldCourseItemBar[i].selected = true;
+      } else {
+        oldCourseItemBar[i].selected = false;
+      }
+    }
+    console.log(oldCourseItemBar);
+    that.setData({
+      courseItemBar: oldCourseItemBar
+    })
+    
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

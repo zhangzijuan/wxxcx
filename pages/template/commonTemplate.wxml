@@ -30,3 +30,37 @@
     </navigator>
   </view>
 </template>
+
+<template name="courseDetailItemBar">
+    <text>{{itemName}}</text>
+</template>
+
+<template name="courseBaseInfo">
+    <view class='course-base-info-section'>
+      <view class='course-base-info'>
+        <text class='course-title'>{{courseDetail.name}}</text>
+        <view class='course-other-tip'>
+          <text class='learn-count'>{{courseDetail.learningCount}}人学过</text>
+          <text>|</text>
+          <text class='comment-count'>{{courseDetail.commentCount}}人评论</text>
+        </view>
+      </view>
+      <view class='divider-section'></view>
+      <view class='course-attr-section'>
+        <text class='course-attr-title'>课程概述</text>
+        <text class='course-attr-cont'>{{courseDetail.introduction}}</text>
+      </view>
+    </view>
+</template>
+
+<template name="courseChapters">
+  <view class='course-chapters-section'>
+    <text>2222</text>
+  </view>
+</template>
+
+<template name="courseComments">
+  <view class='course-comments-section'>
+    <text>3333</text>
+  </view>
+</template>

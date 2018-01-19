@@ -1,5 +1,7 @@
 <!--pages/courseDetail/course_detail.wxml-->
+<import src="../template/commonTemplate.wxml"/>
 <view class='course-detail-section'>
+  <scroll-view scroll-y='true'>
     <view class='course-cover-container'>
         <!-- <view wx:if="{{courseDetail.urlList.length >1 }}">
             <swiper indicator-dots="true" autoplay="false" interval="2000" duration="500">
@@ -12,10 +14,54 @@
         </view> -->
         
         <block wx:for="{{courseDetail.urlList}}" wx:key="{{item}}">
-          <view class='single-cover' wx:if="{{index == 0}}">
-            <image src="{{item}}" class="slide-image" width="355" height="150" mode='widthFix'/>
+          <view class='single-cover' wx:if="{{index == 0}}" mode="widthFix">
+            <image src="{{item}}" class="slide-image"/>
           </view>
         </block>
         
     </view>
+    <view class='course-detail-tab'>
+      <block wx:for="{{courseItemBar}}" wx:key="">
+        <view class='course-detail-item-bar {{item.selected == true ? "active":""}}' data-itemIndex="{{index}}" bindtap='tabBarClick'>
+          <template is="courseDetailItemBar" data="{{...item}}"/>
+        </view>
+      </block>
+    </view>
+    <view class='course-detail-content-section'>
+      <block wx:if="courseItemBarToTop == false">
+        <view hidden="{{courseItemBar[0].selected == false && (courseItemBar[1].selected == true || courseItemBar[2].selected == true)}}">
+            <template is="courseBaseInfo" data="{{courseDetail}}"/>
+        </view>
+        <view hidden="{{courseItemBar[1].selected == false && (courseItemBar[0].selected == true || courseItemBar[2].selected == true)}}">
+          <template is="courseChapters" data=""/>
+        </view>
+        <view hidden="{{courseItemBar[2].selected == false && (courseItemBar[0].selected == true || courseItemBar[1].selected == true)}}">
+          <template is="courseComments" data=""/>
+        </view>
+      </block>
+      <block wx:else>
+        <swiper circular="true" current="{{currentIndex}}" bindchange='touchSwiper'>
+          <swiper-item>
+              <view hidden="{{courseItemBar[0].selected == false && (courseItemBar[1].selected == true || courseItemBar[2].selected == true)}}">
+                  <template is="courseBaseInfo" data="{{courseDetail}}"/>
+              </view>
+          </swiper-item>
+          <swiper-item>
+              <view hidden="{{courseItemBar[1].selected == false && (courseItemBar[0].selected == true || courseItemBar[2].selected == true)}}">
+                <template is="courseChapters" data=""/>
+              </view>
+          </swiper-item>
+          <swiper-item>
+              <view hidden="{{courseItemBar[2].selected == false && (courseItemBar[0].selected == true || courseItemBar[1].selected == true)}}">
+                <template is="courseComments" data=""/>
+              </view>
+          </swiper-item>
+        </swiper>
+      </block>
+    </view>
+  </scroll-view>
+  <view class='course-opt-section'>
+    
+      <button wx:if="{{courseDetail.selected == false && courseDetail.price == 0}}" size="default" hover-class="button-hover">选择课程</button>
+  </view> 
 </view>

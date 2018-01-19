@@ -16,6 +16,19 @@ const formatNumber = n => {
 
 var hostUri = 'https://v4.21tb.com';
 
+
+//用户登陆
+function harvestLogin(callback){
+  let url = 'https://v4.21tb.com/ms/login/login.do';
+  let data = {
+    loginName: '13371968386',
+    password: '13371968386',
+    corpCode: 'harvest_public',
+    industryCode: 'harvest_default'
+  };
+  wxRequest(url,data,callback);
+}
+
 //获取课程列表数据
 function getCourseListData(moduleName,pageNo, pageSize, session_id, callback) {
   let url = '';
@@ -60,6 +73,7 @@ function wxRequest(url, data, callback){
 
 module.exports = {
   formatTime: formatTime,
+  harvestLogin: harvestLogin,
   getCoursesData: getCourseListData,
   getCourseDetail: getCourseDetail 
 }
