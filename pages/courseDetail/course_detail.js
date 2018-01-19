@@ -10,7 +10,11 @@ Page({
   data: {
     currentIndex:0,
     courseItemBarToTop:false,
-    courseItemBar: [{ itemName: '简介', selected: true }, { itemName: '目录', selected: false }, { itemName: '评价', selected: false }]
+    courseItemBar: [{ itemName: '简介', selected: true }, { itemName: '目录', selected: false }, { itemName: '评价', selected: false }],
+    courseSelected:false,
+    chapterShow:false,
+    chapterType:'',
+    chapterUrl:''
   },
 
   /**
@@ -72,6 +76,52 @@ Page({
       courseItemBar: oldCourseItemBar
     })
     
+  },
+  //选择课程
+  selectCourse:function(e){
+    console.log(e.currentTarget.dataset.courseid);
+    let that = this;
+    until.selectCourse(e.currentTarget.dataset.courseid, app.globalData.session_id,function(res){
+      wx.showToast({
+        title: '选课成功',
+        icon: 'success',
+        duration: 2000,
+        success:function(e){
+          var oldCourseItemBar = that.data.courseItemBar;
+          for (var i = 0; i < oldCourseItemBar.length; i++) {
+            if (i == 1) {
+              oldCourseItemBar[i].selected = true;
+            } else {
+              oldCourseItemBar[i].selected = false;
+            }
+          }
+          that.setData({
+            courseSelected:true,
+            courseItemBar: oldCourseItemBar,
+            currentIndex: 1
+          })
+        }
+      })
+    });
+  },
+  chapterShow:function(e){
+    let that = this;
+    let signedUrl = e.currentTarget.dataset.signedurl;
+    let itemType = e.currentTarget.dataset.itemtype;
+    if (itemType == 'PDF'){
+      
+    } else if (itemType == 'AUDIO' || itemType == 'VIDEO') {
+      that.setData({
+        chapterShow: true,
+        chapterType: itemType,
+        chapterUrl: signedUrl
+      });
+    } else if (itemType == 'MICRO_CONTENT') {
+      wx.navigateTo({
+        url: '../webPage/webPage?url=' + signedUrl
+      })
+    }
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -15,17 +15,23 @@ const formatNumber = n => {
 }
 
 var hostUri = 'https://v4.21tb.com';
-
+// var hostUri = 'https://yufa.21tb.com';
 
 //用户登陆
 function harvestLogin(callback){
-  let url = 'https://v4.21tb.com/ms/login/login.do';
+  let url = hostUri +'/ms/login/login.do';
   let data = {
     loginName: '13371968386',
     password: '13371968386',
     corpCode: 'harvest_public',
     industryCode: 'harvest_default'
   };
+  // let data = {
+  //   loginName: '18221343621',
+  //   password: '18221343621',
+  //   corpCode: 'harvest_public',
+  //   industryCode: 'harvest_default'
+  // };
   wxRequest(url,data,callback);
 }
 
@@ -48,6 +54,12 @@ function getCourseListData(moduleName,pageNo, pageSize, session_id, callback) {
 function getCourseDetail(courseId, session_id, callback) {
   let url = hostUri +'/ms/newCourse/loadCourseDetail?eln_session_id=' + session_id;
   wxRequest(url, {"courseId": courseId, 'corpCode': 'harvest_default' }, callback);
+}
+
+//选择课程
+function selectCourse(courseId,session_id,callback){
+  let url = hostUri + '/ms/newCourse/selectMyCourse?eln_session_id=' + session_id;
+  wxRequest(url, { "courseId": courseId, 'corpCode': 'harvest_public' }, callback);
 }
 
 
@@ -75,5 +87,6 @@ module.exports = {
   formatTime: formatTime,
   harvestLogin: harvestLogin,
   getCoursesData: getCourseListData,
-  getCourseDetail: getCourseDetail 
+  getCourseDetail: getCourseDetail,
+  selectCourse: selectCourse 
 }

@@ -55,7 +55,19 @@
 
 <template name="courseChapters">
   <view class='course-chapters-section'>
-    <text>2222</text>
+     <block wx:for="{{courseItems}}" wx:key="">
+      <view class='course-chapter-item' data-signedUrl="{{item.signedUrl}}" data-itemType="{{item.itemType}}" bindtap='chapterShow'>
+        <view class="course-chapter-type">
+          <text wx:if="{{item.itemType == 'PDF'}}">PDF</text>
+          <text wx:elif="{{item.itemType == 'VIDEO'}}">视频</text>
+          <text wx:elif="{{item.itemType == 'AUDIO'}}">音频</text>
+          <text wx:elif="{{item.itemType == 'PDF'}}">图文</text>
+        </view>
+        <view class='course-chapter-name'>
+          <text>{{item.name}}</text>
+        </view>
+      </view> 
+     </block> 
   </view>
 </template>
 
