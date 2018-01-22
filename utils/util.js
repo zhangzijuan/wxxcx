@@ -63,9 +63,16 @@ function selectCourse(courseId,session_id,callback){
 }
 
 //获取课程评价列表数据
-function getCourseCommentListData (){
-  let url = hostUri + '/ms/newCourse/selectMyCourse?eln_session_id=' + session_id;
-  wxRequest(url, { "courseId": courseId, 'corpCode': 'harvest_public' }, callback);
+function getCourseCommentListData(courseId, session_id, pageNo, pageSize,corpCode,callback){
+  let url = hostUri + '/ms/mobile/listDiscuss?eln_session_id=' + session_id;
+  let data = {
+    objectId:courseId,
+    objectType:'COURSE_COMMENT',
+    pageNo:pageNo,
+    pageSize:pageSize,
+    corpCode:corpCode
+  }
+  wxRequest(url,data, callback);
 }
 
 
@@ -94,5 +101,6 @@ module.exports = {
   harvestLogin: harvestLogin,
   getCoursesData: getCourseListData,
   getCourseDetail: getCourseDetail,
-  selectCourse: selectCourse 
+  selectCourse: selectCourse,
+  getCourseCommentListData: getCourseCommentListData
 }

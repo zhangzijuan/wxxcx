@@ -72,74 +72,14 @@
 </template>
 
 <template name="courseComments">
-  <view class='course-comments-section'>
-    <!-- <block wx:for='{{}}' wx:key=""> -->
-      <view class='course-comment-item'>
-        <view class='author-face'>
-          <!-- <image src=''></image> -->
-          <text>erew</text>
-        </view>
-        <view class='comment-other-info'>
-          <text class='author-name'>lucas</text>
-          <text class='comment-time'>2017-12-09</text>
-          <text class='comment-cont'>收货真好，明年发布会期待中</text>
-        </view>
-      </view>
-      <view class='course-comment-item'>
-        <view class='author-face'>
-          <!-- <image src=''></image> -->
-          <text>erew</text>
-        </view>
-        <view class='comment-other-info'>
-          <text class='author-name'>lucas</text>
-          <text class='comment-time'>2017-12-09</text>
-          <text class='comment-cont'>收货真好，明年发布会期待中</text>
-        </view>
-      </view>
-      <view class='course-comment-item'>
-        <view class='author-face'>
-          <!-- <image src=''></image> -->
-          <text>erew</text>
-        </view>
-        <view class='comment-other-info'>
-          <text class='author-name'>lucas</text>
-          <text class='comment-time'>2017-12-09</text>
-          <text class='comment-cont'>收货真好，明年发布会期待中</text>
-        </view>
-      </view>
-      <view class='course-comment-item'>
-        <view class='author-face'>
-          <!-- <image src=''></image> -->
-          <text>erew</text>
-        </view>
-        <view class='comment-other-info'>
-          <text class='author-name'>lucas</text>
-          <text class='comment-time'>2017-12-09</text>
-          <text class='comment-cont'>收货真好，明年发布会期待中</text>
-        </view>
-      </view>
-      <view class='course-comment-item'>
-        <view class='author-face'>
-          <!-- <image src=''></image> -->
-          <text>erew</text>
-        </view>
-        <view class='comment-other-info'>
-          <text class='author-name'>lucas</text>
-          <text class='comment-time'>2017-12-09</text>
-          <text class='comment-cont'>收货真好，明年发布会期待中</text>
-        </view>
-      </view>
-      <view class='course-comment-item'>
-        <view class='author-face'>
-          <!-- <image src=''></image> -->
-          <text>erew</text>
-        </view>
-        <view class='comment-other-info'>
-          <text class='author-name'>lucas</text>
-          <text class='comment-time'>2017-12-09</text>
-          <text class='comment-cont'>收货真好，明年发布会期待中</text>
-        </view>
-      </view>
-    <!-- </block> -->
+  <view class='course-comment-item'>
+    <view class='author-face'>
+        <image src='{{faceUrl}}'></image>
+    </view>
+    <view class='comment-other-info'>
+      <text class='author-name'>{{userName}}</text>
+      <text class='comment-time'>{{createTime}}</text>
+      <text class='comment-cont'>{{contentPreview}}</text>
+    </view>
   </view>
 </template>

@@ -42,7 +42,11 @@
           </view>
           <view hidden="{{courseItemBar[2].selected == false && (courseItemBar[0].selected == true || courseItemBar[1].selected == true)}}">
             <scroll-view scroll-y class="course-scroll-section" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" upper-threshold="100" lower-threshold="100" scroll-with-animation="true" enable-back-to-top="true">
-              <template is="courseComments" data="{{...courseDetail}}"/>
+              <view class='course-comments-section'>
+                <block wx:for='{{courseCommentList}}' wx:key=""> 
+                  <template is="courseComments" data="{{...item}}"/>
+                </block>
+              </view>
             </scroll-view>
           </view>
         </block>

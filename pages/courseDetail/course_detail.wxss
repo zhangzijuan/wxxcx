@@ -141,8 +141,8 @@ button::after {
 .course-comment-item{
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 26rpx 0;
+  align-items: flex-start;
+  padding: 26rpx 0 26rpx 30rpx;
 }
 .author-face{
   width: 15%;
@@ -153,6 +153,28 @@ button::after {
   justify-content: space-between;
   align-items: flex-start;
   width: 85%;
-  padding-bottom: 26rpx;
-  border-bottom: 3rpx solid #bbb;
+  padding: 0 30rpx 26rpx 20rpx;
+  border-bottom: 3rpx solid #efefef;
+}
+.author-face image{
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 50%;
+}
+
+.author-name{
+  color: #13AFEF;
+  font-size: 32rpx;
+}
+
+.comment-time{
+  color: #BBBBBB;
+  font-size: 28rpx;
+  margin-top: 15rpx;
+}
+
+.comment-cont{
+  color: #242526;
+  font-size: 32rpx;
+  margin-top: 15rpx;
 }

@@ -14,7 +14,9 @@ Page({
     courseSelected:false,
     chapterShow:false,
     chapterType:'',
-    chapterUrl:''
+    chapterUrl:'',
+    commentPageNo:1,
+    commentPageSize:10
   },
 
   /**
@@ -54,9 +56,16 @@ Page({
     that.setData({
       courseItemBar: oldCourseItemBar,
       currentIndex:currentEventIndex
-    })
-    
-
+    });
+    if (currentEventIndex == 2){
+      //获取课程评价列表
+      until.getCourseCommentListData(that.data.courseDetail.courseId, app.globalData.session_id, that.data.commentPageNo, that.data.commentPageSize, that.data.courseDetail.corpCode, function (res) {
+        console.log(res.data);
+        that.setData({
+          courseCommentList:res.data
+        });
+      })
+    }
   },
   //内容块滑动事件处理
   touchSwiper:function(e){
