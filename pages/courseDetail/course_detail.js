@@ -55,6 +55,7 @@ Page({
       courseItemBar: oldCourseItemBar,
       currentIndex:currentEventIndex
     })
+    
 
   },
   //内容块滑动事件处理
@@ -104,11 +105,36 @@ Page({
       })
     });
   },
+  //章节播放
   chapterShow:function(e){
     let that = this;
     let signedUrl = e.currentTarget.dataset.signedurl;
     let itemType = e.currentTarget.dataset.itemtype;
     if (itemType == 'PDF'){
+      console.log(signedUrl);
+      that.videoContext = wx.createVideoContext('courseVideo');
+      that.videoContext.pause();
+      wx.pauseBackgroundAudio();
+      //pdf 文件的处理
+      const downloadTask = wx.downloadFile({
+        url: signedUrl,
+        success:function(res){
+          if (res.statusCode === 200) {
+            console.log(res.tempFilePath);
+            wx.openDocument({
+              filePath: res.tempFilePath,
+              success: function (res) {
+                console.log('打开文档成功')
+              }
+            })
+          }
+        }
+      });
+      downloadTask.onProgressUpdate((res) => {
+        console.log('下载进度', res.progress)
+        console.log('已经下载的数据长度', res.totalBytesWritten)
+        console.log('预期需要下载的数据总长度', res.totalBytesExpectedToWrite)
+      })
       
     } else if (itemType == 'AUDIO' || itemType == 'VIDEO') {
       that.setData({
@@ -127,7 +153,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    
   },
 
   /**

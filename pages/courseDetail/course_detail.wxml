@@ -22,8 +22,8 @@
           
       </view>
       <view class='chapter-show-section' wx:if="{{chapterShow == true}}">
-        <video wx:if="{{chapterType == 'VIDEO'}}" src="{{chapterUrl}}"></video>
-        <audio wx:if="{{chapterType == 'AUDIO'}}" src="{{chapterUrl}}"></audio>
+        <video id="courseVideo" wx:if="{{chapterType == 'VIDEO'}}" src="{{chapterUrl}}"></video>
+        <audio id="courseAudio" wx:if="{{chapterType == 'AUDIO'}}" src="{{chapterUrl}}"></audio>
       </view>
       <view class='course-detail-tab'>
         <block wx:for="{{courseItemBar}}" wx:key="">
@@ -41,7 +41,9 @@
             <template is="courseChapters" data="{{...courseDetail}}"/>
           </view>
           <view hidden="{{courseItemBar[2].selected == false && (courseItemBar[0].selected == true || courseItemBar[1].selected == true)}}">
-            <template is="courseComments" data=""/>
+            <scroll-view scroll-y class="course-scroll-section" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" upper-threshold="100" lower-threshold="100" scroll-with-animation="true" enable-back-to-top="true">
+              <template is="courseComments" data="{{...courseDetail}}"/>
+            </scroll-view>
           </view>
         </block>
         <block wx:else>

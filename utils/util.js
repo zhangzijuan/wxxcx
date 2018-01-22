@@ -62,6 +62,12 @@ function selectCourse(courseId,session_id,callback){
   wxRequest(url, { "courseId": courseId, 'corpCode': 'harvest_public' }, callback);
 }
 
+//获取课程评价列表数据
+function getCourseCommentListData (){
+  let url = hostUri + '/ms/newCourse/selectMyCourse?eln_session_id=' + session_id;
+  wxRequest(url, { "courseId": courseId, 'corpCode': 'harvest_public' }, callback);
+}
+
 
 function wxRequest(url, data, callback){
   wx.request({
