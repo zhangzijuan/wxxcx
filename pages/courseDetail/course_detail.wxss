@@ -1,6 +1,7 @@
 /* pages/courseDetail/course_detail.wxss */
-.user-select-course{
+scroll-view{
   height: 1200rpx;
+  padding-bottom:100rpx;
 }
 .single-cover{
   display: flex;
@@ -77,15 +78,19 @@ swiper{
   left: 0;
   bottom: 0;
   width: 100%;
+  display: flex;
+  justify-content:space-between;
+  align-items: center; 
+  height:100rpx;
+  border-top: 1px solid #F2F2F2;
+  background-color: #fff;
 }
-.user-no-select{
-  padding-bottom:100rpx;
-}
-
 .course-opt-section button{
    border-radius: 0;
    background-color: #FFC200;
    color: #fff;
+   width:100%;
+   line-height:2.45;
 }
 
 button::after {
@@ -197,6 +202,39 @@ button::after {
 
 .user-cannot-study .course-chapter-name {
   color: #bbb;
+}
+
+.course-detail-back,.course-detail-share{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+   width: 40%; 
+  border-right: 1px solid #F2F2F2;
+  height:100rpx;
+}
+.share-icon image{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.index-icon image{
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.course-state-text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; 
+  color: #A6A6A6;
+  font-size: 36rpx;
+}
+
+.index-text,.share-text{
+  color: #242526;
+  font-size: 24rpx;
 }
 
 

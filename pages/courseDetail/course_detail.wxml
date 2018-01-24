@@ -1,7 +1,7 @@
 <!--pages/courseDetail/course_detail.wxml-->
 <import src="../template/commonTemplate.wxml"/>
 <view class='course-detail-section'>
-  <scroll-view scroll-y='true' class="{{!courseSelected ? 'user-no-select':'user-select-course'}}" bindscroll="mainPageScroll">
+  <scroll-view scroll-y='true' bindscroll="mainPageScroll">
     <view class='main-content-container'>
       <view class='course-cover-container' wx:if="{{!courseItemBarToTop && chapterShow == false}}">
           <!-- <view wx:if="{{courseDetail.urlList.length >1 }}">
@@ -70,13 +70,26 @@
       </view>
     </view>
   </scroll-view>
-  <view class='course-opt-section' wx:if="{{courseSelected == false}}">
-    <button data-courseId="{{courseDetail.courseId}}"  wx:if="{{courseDetail.selected == false && courseDetail.price == 0}}" size="default" bindtap="selectCourse" hover-class="button-hover">选择课程</button>
-    <view class='need-buy-section' wx:if="{{courseDetail.selected == false && courseDetail.price != 0}}">
-      <view class='course-price'>
-        <text>¥{{courseDetail.price}}</text>
+  <view class='course-opt-section'>
+    <view class="course-detail-back">
+      <view class='index-icon'>
+        <image src="../image/shareBack.png"/>
       </view>
-      <button size="default" hover-class="button-hover">购买课程</button>
+      <text class='index-text'>首页</text>
+    </view>  
+    <view class="course-detail-share">
+      <view class='share-icon'>
+        <image src="../image/shareBtn.png"/>
+      </view>
+      <text class='share-text'>分享</text>
+    </view>
+    <view class='course-state-text' wx:if="{{courseSelected}}">
+      <text wx:if="courseDetail.price == 0">已选课</text>
+      <text wx:else>已购买</text>
+    </view>
+    <view class='course-state-text' wx:else>
+      <button wx:if="courseDetail.price != 0" class="buy-button" bindtap="buyCourse">{{courseDetail.price}}元购买课程</button>
+      <button wx:else data-courseId="{{courseDetail.courseId}}"  size="default" bindtap="selectCourse" hover-class="button-hover">选择课程</button>
     </view>
   </view> 
 </view>
