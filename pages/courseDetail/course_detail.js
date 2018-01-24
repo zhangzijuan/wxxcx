@@ -31,13 +31,25 @@ Page({
       until.getCourseDetail(options.courseId, app.globalData.session_id,function(res){
         console.log(res.data);
         that.setData({
-            courseDetail:res.data
+            courseDetail:res.data,
+            courseSelected: res.data.selected
         });
         //设置当前界面的标题
         wx.setNavigationBarTitle({
           title: res.data.name
         });
       });
+  },
+  //页面滚动处理
+  mainPageScroll:function(e){
+    let that = this;
+    console.log(e.detail.scrollTop)
+    console.log(e.detail.scrollTop == 150)
+    if (e.detail.scrollTop == 150){
+      that.setData({
+        courseItemBarToTop:true
+      })
+    }
   },
   tabBarClick:function(e){
     let that = this;
@@ -98,6 +110,13 @@ Page({
         duration: 2000,
         success:function(e){
           var oldCourseItemBar = that.data.courseItemBar;
+          if (oldCourseItemBar[1].selected){
+            that.setData({
+              courseSelected: true,
+              currentIndex: 1
+            })
+            return false;
+          }
           for (var i = 0; i < oldCourseItemBar.length; i++) {
             if (i == 1) {
               oldCourseItemBar[i].selected = true;
@@ -117,6 +136,13 @@ Page({
   //章节播放
   chapterShow:function(e){
     let that = this;
+    if (!that.data.courseSelected){
+      wx.showToast({
+        title: '请先选择课程！',
+        duration: 2000
+      });
+      return false;
+    }
     let signedUrl = e.currentTarget.dataset.signedurl;
     let itemType = e.currentTarget.dataset.itemtype;
     if (itemType == 'PDF'){

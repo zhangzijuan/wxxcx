@@ -1,4 +1,7 @@
 /* pages/courseDetail/course_detail.wxss */
+.user-select-course{
+  height: 1200rpx;
+}
 .single-cover{
   display: flex;
   justify-content: center;
@@ -75,7 +78,7 @@ swiper{
   bottom: 0;
   width: 100%;
 }
-scroll-view{
+.user-no-select{
   padding-bottom:100rpx;
 }
 
@@ -178,3 +181,22 @@ button::after {
   font-size: 32rpx;
   margin-top: 15rpx;
 }
+
+.user-can-study .course-chapter-type{
+  border-color:#FFC200;
+  color: #FFA200;
+}
+.user-can-study .course-chapter-name{
+  color: #242526;
+}
+
+.user-cannot-study .course-chapter-type {
+  color: #bbb;
+  border-color: #bbb;
+}
+
+.user-cannot-study .course-chapter-name {
+  color: #bbb;
+}
+
+

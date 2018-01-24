@@ -1,9 +1,9 @@
 <!--pages/courseDetail/course_detail.wxml-->
 <import src="../template/commonTemplate.wxml"/>
 <view class='course-detail-section'>
-  <scroll-view scroll-y='true'>
+  <scroll-view scroll-y='true' class="{{!courseSelected ? 'user-no-select':'user-select-course'}}" bindscroll="mainPageScroll">
     <view class='main-content-container'>
-      <view class='course-cover-container' wx:if="{{chapterShow == false}}">
+      <view class='course-cover-container' wx:if="{{!courseItemBarToTop && chapterShow == false}}">
           <!-- <view wx:if="{{courseDetail.urlList.length >1 }}">
               <swiper indicator-dots="true" autoplay="false" interval="2000" duration="500">
                 <block wx:for="{{courseDetail.urlList}}">
@@ -21,11 +21,11 @@
           </block>
           
       </view>
-      <view class='chapter-show-section' wx:if="{{chapterShow == true}}">
+      <view class='chapter-show-section' wx:if="{{!courseItemBarToTop && chapterShow == true}}">
         <video id="courseVideo" wx:if="{{chapterType == 'VIDEO'}}" src="{{chapterUrl}}"></video>
         <audio id="courseAudio" wx:if="{{chapterType == 'AUDIO'}}" src="{{chapterUrl}}"></audio>
       </view>
-      <view class='course-detail-tab'>
+      <view class="course-detail-tab">
         <block wx:for="{{courseItemBar}}" wx:key="">
           <view class='course-detail-item-bar {{item.selected == true ? "active":""}}' data-itemIndex="{{index}}" bindtap='tabBarClick'>
             <template is="courseDetailItemBar" data="{{...item}}"/>
@@ -37,17 +37,15 @@
           <view hidden="{{courseItemBar[0].selected == false && (courseItemBar[1].selected == true || courseItemBar[2].selected == true)}}">
               <template is="courseBaseInfo" data="{{courseDetail}}"/>
           </view>
-          <view hidden="{{courseItemBar[1].selected == false && (courseItemBar[0].selected == true || courseItemBar[2].selected == true)}}">
+          <view class="{{!courseSelected ? 'user-cannot-study':'user-can-study'}}" hidden="{{courseItemBar[1].selected == false && (courseItemBar[0].selected == true || courseItemBar[2].selected == true)}}">
             <template is="courseChapters" data="{{...courseDetail}}"/>
           </view>
           <view hidden="{{courseItemBar[2].selected == false && (courseItemBar[0].selected == true || courseItemBar[1].selected == true)}}">
-            <scroll-view scroll-y class="course-scroll-section" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" upper-threshold="100" lower-threshold="100" scroll-with-animation="true" enable-back-to-top="true">
-              <view class='course-comments-section'>
-                <block wx:for='{{courseCommentList}}' wx:key=""> 
-                  <template is="courseComments" data="{{...item}}"/>
-                </block>
-              </view>
-            </scroll-view>
+            <view class='course-comments-section'>
+              <block wx:for='{{courseCommentList}}' wx:key=""> 
+                <template is="courseComments" data="{{...item}}"/>
+              </block>
+            </view>
           </view>
         </block>
         <block wx:else>
