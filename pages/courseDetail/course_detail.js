@@ -23,8 +23,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log('555555:'+options.fromShare)
       this.setData({
-        courseId:options.courseId
+        courseId:options.courseId,
+        fromShare: options.fromShare
       });
       let that = this;
       //获取课程详情信息
@@ -50,6 +52,10 @@ Page({
         courseItemBarToTop:true
       })
     }
+    // wx.pageScrollTo({
+    //   scrollTop: 0,
+    //   duration: 300
+    // })
   },
   tabBarClick:function(e){
     let that = this;
@@ -184,6 +190,30 @@ Page({
     }
 
   },
+  //分享信息出去后，强制返回课程列表首页
+  backCourseList:function(e){
+    wx.switchTab({
+      url: '/pages/course/course_list',
+    })
+  },
+  //课程详情界面分享转发
+  onShareAppMessage: function (res) {
+    console.log('777777:'+res)
+    let that = this;
+    console.log('66666:' + '/pages/courseDetail/course_detail?courseId=' + that.data.courseDetail.courseId + '&fromShare=forwarding');
+    return {
+      title: that.data.courseDetail.name,
+      path: '/pages/courseDetail/course_detail?courseId=' + that.data.courseDetail.courseId + '&fromShare=forwarding',
+      success: function (res) {
+        // 转发成功
+        console.log('转发成功！')
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log('转发失败！')
+      }
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -223,13 +253,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
   
   }
 })

@@ -71,25 +71,27 @@
     </view>
   </scroll-view>
   <view class='course-opt-section'>
-    <view class="course-detail-back">
+    <view class="course-detail-back" wx:if="{{fromShare == 'forwarding'}}" bindtap='backCourseList'>
       <view class='index-icon'>
         <image src="../image/shareBack.png"/>
       </view>
       <text class='index-text'>首页</text>
     </view>  
-    <view class="course-detail-share">
-      <view class='share-icon'>
-        <image src="../image/shareBtn.png"/>
+    <button class="share-button" hover-class="none" open-type="share">
+      <view class="course-detail-share">
+        <view class='share-icon'>
+          <image src="../image/shareBtn.png"/>
+        </view>
+        <text class='share-text'>分享</text>
       </view>
-      <text class='share-text'>分享</text>
-    </view>
+    </button>
     <view class='course-state-text' wx:if="{{courseSelected}}">
       <text wx:if="courseDetail.price == 0">已选课</text>
       <text wx:else>已购买</text>
     </view>
     <view class='course-state-text' wx:else>
-      <button wx:if="courseDetail.price != 0" class="buy-button" bindtap="buyCourse">{{courseDetail.price}}元购买课程</button>
-      <button wx:else data-courseId="{{courseDetail.courseId}}"  size="default" bindtap="selectCourse" hover-class="button-hover">选择课程</button>
+      <button class="buy-button" wx:if="{{courseDetail.price != 0}}" bindtap="buyCourse">{{courseDetail.price}}元购买课程</button>
+      <button class="select-button" wx:else data-courseId="{{courseDetail.courseId}}"  size="default" bindtap="selectCourse" hover-class="button-hover">选择课程</button>
     </view>
   </view> 
 </view>

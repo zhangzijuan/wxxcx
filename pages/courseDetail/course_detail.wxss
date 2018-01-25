@@ -81,16 +81,17 @@ swiper{
   display: flex;
   justify-content:space-between;
   align-items: center; 
-  height:100rpx;
+  height:110rpx;
   border-top: 1px solid #F2F2F2;
   background-color: #fff;
 }
-.course-opt-section button{
+.course-opt-section .buy-button,.course-opt-section .select-button {
    border-radius: 0;
    background-color: #FFC200;
    color: #fff;
    width:100%;
-   line-height:2.45;
+   line-height:3.1;
+   font-size:36rpx;
 }
 
 button::after {
@@ -204,18 +205,28 @@ button::after {
   color: #bbb;
 }
 
-.course-detail-back,.course-detail-share{
+.course-detail-back{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-   width: 40%; 
+  width: 40%; 
   border-right: 1px solid #F2F2F2;
-  height:100rpx;
+  height:110rpx;
 }
+.course-detail-share{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top:15rpx
+}
+
 .share-icon image{
   width: 40rpx;
   height: 40rpx;
+  display: block;
 }
 
 .index-icon image{
@@ -235,6 +246,15 @@ button::after {
 .index-text,.share-text{
   color: #242526;
   font-size: 24rpx;
+}
+.course-opt-section .share-button{
+  background-color: #fff;
+  width: 40%;
+  padding-left: 0;
+  padding-right: 0;
+  border-right: 1px solid #F2F2F2;
+  height:110rpx;
+  border-radius: 0;
 }
 
 
