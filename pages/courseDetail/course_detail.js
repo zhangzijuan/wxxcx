@@ -45,17 +45,12 @@ Page({
   //页面滚动处理
   mainPageScroll:function(e){
     let that = this;
-    console.log(e.detail.scrollTop)
-    console.log(e.detail.scrollTop == 150)
     if (e.detail.scrollTop == 150){
-      that.setData({
-        courseItemBarToTop:true
+      wx.pageScrollTo({
+        scrollTop: 0,
+        duration: 300
       })
     }
-    // wx.pageScrollTo({
-    //   scrollTop: 0,
-    //   duration: 300
-    // })
   },
   tabBarClick:function(e){
     let that = this;
@@ -198,9 +193,7 @@ Page({
   },
   //课程详情界面分享转发
   onShareAppMessage: function (res) {
-    console.log('777777:'+res)
     let that = this;
-    console.log('66666:' + '/pages/courseDetail/course_detail?courseId=' + that.data.courseDetail.courseId + '&fromShare=forwarding');
     return {
       title: that.data.courseDetail.name,
       path: '/pages/courseDetail/course_detail?courseId=' + that.data.courseDetail.courseId + '&fromShare=forwarding',
