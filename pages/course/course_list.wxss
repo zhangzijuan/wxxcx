@@ -37,3 +37,22 @@
   align-items: center;
   padding: 20rpx 0;
 }
+.course-index-share-btn{
+  position: absolute;
+  bottom: 50rpx;
+  right: 38rpx;
+  width: 120rpx;
+  padding-left: 0;
+  padding-right: 0;
+  height:120rpx;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+button::after{
+  border: none;
+}
+.course-index-share image{
+  width: 120rpx;
+  height: 120rpx;
+}

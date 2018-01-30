@@ -19,3 +19,8 @@
     <text wx:if="{{lastPage == true}}">已经到底啦。。。</text>
   </view> 
 </scroll-view>
+<button class='course-index-share-btn' hover-class="none" open-type='share'>
+  <view class='course-index-share'>
+      <image src='/pages/image/course_index_share.png'></image>
+  </view>
+</button>

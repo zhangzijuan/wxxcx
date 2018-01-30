@@ -117,6 +117,22 @@ Page({
   scroll: function (e) {
     console.log("7777"+e)
   },
+  //课程列表界面分享转发
+  onShareAppMessage: function (res) {
+    let that = this;
+    return {
+      title: 'U收获每周精选',
+      path: '/pages/course/course_list?fromShare=forwarding&shareTarget=course_list',
+      success: function (res) {
+        // 转发成功
+        console.log('转发成功！')
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log('转发失败！')
+      }
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -149,13 +165,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
   
   }
 })

@@ -196,7 +196,7 @@ Page({
     let that = this;
     return {
       title: that.data.courseDetail.name,
-      path: '/pages/courseDetail/course_detail?courseId=' + that.data.courseDetail.courseId + '&fromShare=forwarding',
+      path: '/pages/courseDetail/course_detail?courseId=' + that.data.courseDetail.courseId + '&fromShare=forwarding&shareTarget=course_detail',
       success: function (res) {
         // 转发成功
         console.log('转发成功！')
