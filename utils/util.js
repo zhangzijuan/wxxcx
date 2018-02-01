@@ -14,8 +14,8 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
-var hostUri = 'https://v4.21tb.com';
-// var hostUri = 'https://yufa.21tb.com';
+// var hostUri = 'https://v4.21tb.com';
+var hostUri = 'http://cloud.21tb.com/';
 
 //用户登陆
 function harvestLogin(callback){

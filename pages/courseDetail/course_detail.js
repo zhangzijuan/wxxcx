@@ -16,7 +16,17 @@ Page({
     chapterType:'',
     chapterUrl:'',
     commentPageNo:1,
-    commentPageSize:10
+    commentPageSize:10,
+    videoPlayIconFun:'',
+    videoPlayIconList: ['/pages/image/voice1.png', '/pages/image/voice2.png','/pages/image/voice3.png'],
+    videoPlayIcon:'',
+    currentProcess: '--:--',//显示
+    currentProcessNum: 0,//赋值
+    totalProcess: '--:--',
+    totalProcessNum: 1,
+    seek: -1,
+    imgUrl: '../../images/play.png',
+    canSlider: false
   },
 
   /**
@@ -144,6 +154,9 @@ Page({
       });
       return false;
     }
+    if (that.data.videoPlayIconFun != ''){
+      clearInterval(that.data.videoPlayIconFun);
+    }
     let signedUrl = e.currentTarget.dataset.signedurl;
     let itemType = e.currentTarget.dataset.itemtype;
     if (itemType == 'PDF'){
@@ -171,13 +184,44 @@ Page({
         console.log('已经下载的数据长度', res.totalBytesWritten)
         console.log('预期需要下载的数据总长度', res.totalBytesExpectedToWrite)
       })
-      
-    } else if (itemType == 'AUDIO' || itemType == 'VIDEO') {
+    }else if (itemType == 'VIDEO') {  
+      that.setData({
+        chapterShow: true,
+        chapterType: itemType,
+        chapterUrl: signedUrl
+      }); 
+    } else if (itemType == 'AUDIO') {
       that.setData({
         chapterShow: true,
         chapterType: itemType,
         chapterUrl: signedUrl
       });
+
+      wx.playBackgroundAudio({
+        dataUrl: signedUrl,
+        title: '',
+        coverImgUrl: ''
+      })
+
+      wx.seekBackgroundAudio({
+        position: 30
+      })
+      
+      if (itemType == 'AUDIO'){
+        var i = 0;
+        var videoPlayIconFun = setInterval(()=>{
+          if(i >= 2){
+            i = 0;
+          }
+          that.setData({
+            videoPlayIcon: that.data.videoPlayIconList[i]
+          });
+          i++;
+        },200);
+        that.setData({
+          videoPlayIconFun: videoPlayIconFun
+        });
+      }
     } else if (itemType == 'MICRO_CONTENT') {
       wx.navigateTo({
         url: '../webPage/webPage?url=' + signedUrl

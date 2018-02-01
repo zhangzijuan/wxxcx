@@ -10,7 +10,7 @@ scroll-view{
   width: 100%;
   height: 445rpx;
 }
-.single-cover image{
+.single-cover image,.audio-cover image{
   width: 800rpx;
   height: 445rpx; 
 }
@@ -140,7 +140,8 @@ button::after {
   color: #242526;
   font-size: 32rpx;
 }
-.chapter-show-section video,.chapter-show-section audio{
+.chapter-show-section video,.chapter-show-section audio
+,.audio-bg-container,.audio-bg-container .audio-play{
   width: 100%;
   height: 445rpx; 
 }
@@ -255,6 +256,24 @@ button::after {
   border-right: 1px solid #F2F2F2;
   height:110rpx;
   border-radius: 0;
+}
+.course-audio-container{
+  position: relative;
+}
+.audio-bg-container,.audio-bg-container .audio-play{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.audio-play image{
+  width: 150rpx;
+  height: 150rpx;
+}
+.audio-bg-container .audio-play{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 

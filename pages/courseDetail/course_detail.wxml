@@ -23,7 +23,22 @@
       </view>
       <view class='chapter-show-section' wx:if="{{!courseItemBarToTop && chapterShow == true}}">
         <video id="courseVideo" wx:if="{{chapterType == 'VIDEO'}}" src="{{chapterUrl}}"></video>
-        <audio id="courseAudio" wx:if="{{chapterType == 'AUDIO'}}" src="{{chapterUrl}}"></audio>
+        <view class='course-audio-container'>
+          <audio id="courseAudio" wx:if="{{chapterType == 'AUDIO'}}" src=""></audio>
+          <view class='audio-bg-container'>
+            <view class='audio-cover'>
+              <image src='{{courseDetail.urlList[0]}}'></image>
+            </view>
+            <view class='audio-play'>
+              <image src='{{videoPlayIcon}}'></image>
+            </view>
+            <view class='audio-slider'>
+              <text>{{currentProcess}}</text>
+              <slider bindchange="" bindtouchstart="" bindtouchend="" max="" min="0" value=""></slider>
+              <text>{{totalProcess}}</text>
+            </view>
+          </view>
+        </view>
       </view>
       <view class="course-detail-tab">
         <block wx:for="{{courseItemBar}}" wx:key="">

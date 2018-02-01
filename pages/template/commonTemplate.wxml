@@ -61,7 +61,7 @@
           <text wx:if="{{item.itemType == 'PDF'}}">PDF</text>
           <text wx:elif="{{item.itemType == 'VIDEO'}}">视频</text>
           <text wx:elif="{{item.itemType == 'AUDIO'}}">音频</text>
-          <text wx:elif="{{item.itemType == 'PDF'}}">图文</text>
+          <text wx:elif="{{item.itemType == 'MICRO_CONTENT'}}">图文</text>
         </view>
         <view class='course-chapter-name'>
           <text>{{item.name}}</text>
