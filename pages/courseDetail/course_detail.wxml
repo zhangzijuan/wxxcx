@@ -34,7 +34,7 @@
             </view>
             <view class='audio-slider'>
               <text>{{currentProcess}}</text>
-              <slider bindchange="" bindtouchstart="" bindtouchend="" max="" min="0" value=""></slider>
+              <slider bindchange="" bindtouchstart="" bindtouchend="" max="{{totalProcessNum}}" min="0" value="{{currentProcessNum}}" backgroundColor="#fff" show-value="true" block-size="12"></slider>
               <text>{{totalProcess}}</text>
             </view>
           </view>

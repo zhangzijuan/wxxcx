@@ -276,4 +276,16 @@ button::after {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
+.audio-slider{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width:100%;
+}
 
+slider{
+  width:56%;
+}
